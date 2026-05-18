@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/pages/home.css" />
+    <script src="js/main.js"></script>
   </head>
   <body>
     <header>
@@ -94,6 +95,5 @@
 
       <p class="copy">© 2026 El Hijo del Nopal</p>
     </footer>
-    <script src="js/main.js"></script>
   </body>
 </html>

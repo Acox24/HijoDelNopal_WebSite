@@ -70,8 +70,6 @@
       <a href="#">Política de privacidad</a>
       <a href="#">Contacto</a>
     </section>
-
-    <script src="js/main.js"></script>
     
 </body>
 </html>

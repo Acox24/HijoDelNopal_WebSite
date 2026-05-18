@@ -32,4 +32,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // LOGIN
+  const loginForm = document.getElementById("login-form");
+  const loginBtn = document.getElementById("login-btn");
+
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        loginBtn.disabled = true; // Deshabilitar botón si falta email o contraseña
+        e.preventDefault(); // Evitar envío del formulario
+      }
+    });
+  }
+
 });

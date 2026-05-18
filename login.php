@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/pages/login.css" />
+    <script src="js/main.js"></script>
   </head>
   <body>
     <header>
@@ -33,16 +34,24 @@
       </div>
 
       <div class="login-form">
-        <form>
+        <form action="actions/login_action.php" method="POST">
           <label>Correo electrónico</label>
-          <input type="email" placeholder="ejemplo@correo.com" />
+          <input type="email" name="email" placeholder="ejemplo@correo.com" />
 
           <label>Contraseña</label>
-          <input type="password" placeholder="********" />
+          <input type="password" name="password" placeholder="********" />
+
+          <?php if (isset($_GET['error']) && $_GET['error'] == 'pass'): ?>
+             <div class="alert failure">❌ Contraseña incorrecta</div>
+          <?php endif; ?>
+
+          <?php if (isset($_GET['error']) && $_GET['error'] == 'user'): ?>
+             <div class="alert failure">❌ Correo no encontrado</div>
+          <?php endif; ?>
 
           <div class="login-actions">
             <a href="registro.php">¿Aún no tienes cuenta?</a>
-            <button type="submit" class="btn-primary">Ingresar</button>
+            <button id="login-btn" type="submit" class="btn-primary">Ingresar</button>
           </div>
         </form>
       </div>
@@ -53,7 +62,5 @@
       <a href="#">Política de privacidad</a>
       <a href="#">Contacto</a>
     </section>
-
-    <script src="js/main.js"></script>
   </body>
 </html>
