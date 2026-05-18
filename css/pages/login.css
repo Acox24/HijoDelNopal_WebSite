@@ -1,0 +1,79 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+  gap: 40px;
+}
+
+/* IZQUIERDA */
+.login-info {
+  flex: 1;
+}
+
+.login-info h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.login-info p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* DERECHA */
+.login-form {
+  flex: 1;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM */
+.login-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ACCIONES */
+.login-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-actions a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #1e5eff;
+}
+
+@media (max-width: 768px) {
+
+    .login {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .login-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

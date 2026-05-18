@@ -1,0 +1,28 @@
+.catalogo {
+  display: flex;
+  gap: 20px;
+}
+
+.catalogo-header {
+  margin: 30px auto;
+}
+
+.catalogo-header h2 {
+  margin-bottom: 15px;
+}
+
+.productos-catalogo {
+  flex: 1;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .catalogo {
+    flex-direction: column;
+  }
+}

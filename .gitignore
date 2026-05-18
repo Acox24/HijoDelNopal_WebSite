@@ -1,0 +1,12 @@
+# Archivos sensibles
+includes/db.php
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+
+
+# SQL 
+sql/*.sql

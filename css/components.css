@@ -1,0 +1,127 @@
+.btn-primary {
+  background-color: black;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1746cc;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-weight: bold;
+  color: black;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.buscador {
+  display: flex;
+  gap: 10px;
+}
+
+.buscador input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filtros {
+  width: 250px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.filtros h3 {
+  margin-bottom: 10px;
+}
+
+.filtros h4 {
+  margin-top: 10px;
+}
+
+.filtros ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.filtros li {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+/* BOTÓN FULL */
+.btn-full {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.alert {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.failure {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+  .filtros {
+    width: 100%
+  }
+}

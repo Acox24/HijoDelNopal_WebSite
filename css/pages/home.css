@@ -1,0 +1,41 @@
+.hero img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.productos {
+  padding: 20px 40px;
+}
+
+.productos h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .hero img {
+    height: 230px;
+  }
+
+  .productos {
+    padding: 20px;
+  }
+
+  .productos img {
+    height: min-content;
+  }
+}

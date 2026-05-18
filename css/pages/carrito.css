@@ -1,0 +1,60 @@
+/* HEADER */
+.carrito-header {
+  margin: 30px auto;
+}
+
+.carrito-header h2 {
+  margin-bottom: 10px;
+}
+
+.carrito-header p {
+  margin-bottom: 15px;
+}
+
+/* LAYOUT */
+.carrito {
+  display: flex;
+  gap: 30px;
+}
+
+/* RESUMEN */
+.carrito-resumen {
+  flex: 2;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* TOTALES */
+.carrito-totales {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* CARD TOTAL */
+.card-total {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* TOTAL FINAL */
+.total-final {
+  background-color: #1e5eff;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .carrito {
+    flex-direction: column;
+  }
+
+  .carrito-totales {
+    order: -1; /* sube los totales arriba */
+  }
+}
