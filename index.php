@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-
+      <?php include 'includes/productos_destacados.php'; ?>
       <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
         <div class="alert success">
           Cuenta creada correctamente
@@ -47,33 +47,25 @@
       <h2>Productos Destacados</h2>
 
       <div class="grid-productos">
-        <div class="card">
-          <span class="badge">Nuevo</span>
-          <img src="img/productos/camisa1.png" alt="Camisa personalizada" />
-          <h3>Camisa personalizada</h3>
-          <p>$250 MXN</p>
-        </div>
+
+      <?php while ($row = $result->fetch_assoc()): ?>
 
         <div class="card">
-          <span class="badge">Más vendido</span>
-          <img src="img/productos/taza1.png" alt="Taza personalizada" />
-          <h3>Taza personalizada</h3>
-          <p>$120 MXN</p>
+
+          <?php if ($row['is_new']): ?>
+            <span class="badge">Nuevo</span>
+          <?php elseif ($row['is_best_seller']): ?>
+            <span class="badge">Más vendido</span>
+          <?php endif; ?>
+
+          <img src="<?= $row['imagen'] ?>" alt="<?= $row['nombre'] ?>" />
+          <h3><?= $row['nombre'] ?></h3>
+          <p>$<?= $row['precio'] ?> MXN</p>
+
         </div>
 
-        <div class="card">
-          <span class="badge">Popular</span>
-          <img src="img/productos/gorra1.jpg" alt="Gorra personalizada" />
-          <h3>Gorra personalizada</h3>
-          <p>$180 MXN</p>
-        </div>
+      <?php endwhile; ?>
 
-        <div class="card">
-          <span class="badge">Nuevo</span>
-          <img src="img/productos/sudadera1.jpg" alt="Sudadera personalizada" />
-          <h3>Sudadera personalizada</h3>
-          <p>$400 MXN</p>
-        </div>
       </div>
     </section>
 

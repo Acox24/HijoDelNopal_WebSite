@@ -33,13 +33,13 @@
         <p>Por favor, ingresa tus credenciales para acceder a tu cuenta.</p>
       </div>
 
-      <div class="login-form">
+      <div class="login-form" id="login-form">
         <form action="actions/login_action.php" method="POST">
           <label>Correo electrónico</label>
-          <input type="email" name="email" placeholder="ejemplo@correo.com" />
+          <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" />
 
           <label>Contraseña</label>
-          <input type="password" name="password" placeholder="********" />
+          <input type="password" id="password" name="password" placeholder="********" />
 
           <?php if (isset($_GET['error']) && $_GET['error'] == 'pass'): ?>
              <div class="alert failure">❌ Contraseña incorrecta</div>

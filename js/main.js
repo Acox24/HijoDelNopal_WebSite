@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   console.log("JS cargado");
 
   // MENÚ
@@ -18,8 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mensaje = document.getElementById("mensaje-error");
   const registroBtn = document.getElementById("registro-btn");
 
-  if (password && confirmPassword && mensaje) {
-    
+  if (password && confirmPassword && mensaje && registroBtn) {
     registroBtn.disabled = true; // Deshabilitar botón inicialmente
 
     confirmPassword.addEventListener("keyup", function () {
@@ -35,18 +33,27 @@ document.addEventListener("DOMContentLoaded", function () {
   // LOGIN
   const loginForm = document.getElementById("login-form");
   const loginBtn = document.getElementById("login-btn");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
 
+  if (loginForm && loginBtn) {
+    loginBtn.disabled = true;
 
-  if (loginForm) {
+    function validarCampos() {
+      if (emailInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
+        loginBtn.disabled = false;
+      } else {
+        loginBtn.disabled = true;
+      }
+    }
+
+    emailInput.addEventListener("input", validarCampos);
+    passwordInput.addEventListener("input", validarCampos);
+
     loginForm.addEventListener("submit", function (e) {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      if (!email || !password) {
-        loginBtn.disabled = true; // Deshabilitar botón si falta email o contraseña
-        e.preventDefault(); // Evitar envío del formulario
+      if (loginBtn.disabled) {
+        e.preventDefault();
       }
     });
   }
-
 });

@@ -19,6 +19,7 @@ if (mysqli_num_rows($result) == 1) {
         // 3. Crear sesión
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_role'] = $user['rol'];
 
         // 4. Redirigir
         header("Location: ../index.php");
