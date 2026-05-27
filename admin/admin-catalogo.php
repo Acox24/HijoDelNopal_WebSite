@@ -24,6 +24,7 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages/catalogo.css">
+  <script src="../js/main.js"></script>
 </head>
 
 <body>
@@ -33,8 +34,9 @@ $result = mysqli_query($conn, $sql);
     <h1>Panel Admin</h1>
 
     <ul class="nav-links">
-      <li><a href="../index.php">Ver sitio</a></li>
-      <li><a href="../logout.php">Cerrar sesión</a></li>
+          <li><a>Catálogo</a></li>
+          <li>Hola, <?= $_SESSION['user_email'] ?></li>
+          <li><a href="../logout.php">Cerrar sesión</a></li>
     </ul>
   </nav>
 </header>
@@ -45,18 +47,19 @@ $result = mysqli_query($conn, $sql);
   <div class="registro-form">
     <h3>Agregar producto</h3>
 
-    <form action="../actions/add_producto.php" method="POST">
+    <form action="../actions/add_producto.php" method="POST" enctype="multipart/form-data">
       
       <input type="text" name="nombre" placeholder="Nombre" required>
       <input type="number" name="precio" placeholder="Precio" required>
 
       <select name="categoria">
-        <option value="camisas">Camisas</option>
-        <option value="tazas">Tazas</option>
-        <option value="gorras">Gorras</option>
+        <option value="CAMISA">Camisas</option>
+        <option value="TAZA">Tazas</option>
+        <option value="GORRA">Gorras</option>
+        <option value="SUDADERA">Sudaderas</option>
       </select>
 
-      <input type="text" name="imagen" placeholder="Ruta imagen (img/productos/...)" required>
+      <input type="file" name="imagen" accept="image/*" required>
 
       <select name="etiqueta">
         <option value="">Sin etiqueta</option>
@@ -69,31 +72,41 @@ $result = mysqli_query($conn, $sql);
   </div>
 
   <div class="productos-catalogo">
-    <h3>Productos actuales</h3>
+  <h3>Productos actuales</h3>
 
-    <div class="grid-productos">
+  <div class="grid-productos">
 
-      <?php while($row = mysqli_fetch_assoc($result)): ?>
+    <?php while($row = mysqli_fetch_assoc($result)): ?>
 
-        <div class="card">
-
-          <?php if ($row['etiqueta']): ?>
-            <span class="badge"><?= $row['etiqueta'] ?></span>
-          <?php endif; ?>
-
-          <img src="../<?= $row['imagen'] ?>" alt="">
-          <h3><?= $row['nombre'] ?></h3>
-          <p>$<?= $row['precio'] ?> MXN</p>
-
+      <div class="card">
+        <div class="card-actions">
+          <button onclick="abrirModal(<?= $row['id'] ?>, '<?= $row['nombre'] ?>', <?= $row['precio'] ?>, '<?= $row['categoria'] ?>', '<?= $row['etiqueta'] ?>')">Editar</button>
+          
+          <a href="../actions/delete_producto.php?id=<?= $row['id'] ?>" 
+             class="btn-delete"
+             onclick="return confirm('¿Eliminar este producto?');">
+             🗑️
+          </a>
         </div>
 
-      <?php endwhile; ?>
+        <?php if ($row['etiqueta']): ?>
+          <span class="badge"><?= $row['etiqueta'] ?></span>
+        <?php endif; ?>
 
-    </div>
+        <img src="../<?= $row['imagen'] ?>" alt="">
+        <h3><?= $row['nombre'] ?></h3>
+        <p>$<?= $row['precio'] ?> MXN</p>
+
+      </div>
+
+    <?php endwhile; ?>
+
   </div>
+</div>
 
 </section>
 
 <script src="../js/main.js"></script>
+<?php include '../views/editar_producto.php'; ?>
 </body>
 </html>

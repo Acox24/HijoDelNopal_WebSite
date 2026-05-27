@@ -57,3 +57,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+function abrirModal(id, nombre, precio, categoria, etiqueta) {
+  document.getElementById("modalEditar").style.display = "block";
+
+  document.getElementById("edit_id").value = id;
+  document.getElementById("edit_nombre").value = nombre;
+  document.getElementById("edit_precio").value = precio;
+  document.getElementById("edit_categoria").value = categoria;
+  document.getElementById("edit_etiqueta").value = etiqueta;
+}
+
+function cerrarModal() {
+  document.getElementById("modalEditar").style.display = "none";
+}
+
+console.log(typeof abrirModal);

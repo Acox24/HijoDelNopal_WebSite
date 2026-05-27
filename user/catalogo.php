@@ -1,3 +1,10 @@
+<?php
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+session_start();
+require_once '../includes/get_proucts.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,8 +28,17 @@
         <ul class="nav-links" id="nav-links">
           <li><a href="../index.php">Home</a></li>
           <li><a href="catalogo.php">Catálogo</a></li>
-          <li><a href="../login.php">Iniciar Sesión</a></li>
-          <li><a href="../registro.php" class="btn-primary">Registrarse</a></li>
+           <?php if (isset($_SESSION['user_id'])): ?>
+
+              <li>Hola, <?= $_SESSION['user_email'] ?></li>
+              <li><a href="../logout.php">Cerrar sesión</a></li>
+
+          <?php else: ?>
+
+              <li><a href="../login.php">Iniciar sesión</a></li>
+              <li><a href="../registro.php">Registrarse</a></li>
+
+          <?php endif; ?>
         </ul>
       </nav>
     </header>
@@ -30,10 +46,10 @@
     <section class="catalogo-header container">
       <h2>Catálogo de Productos</h2>
 
-      <div class="buscador">
-        <input type="text" placeholder="Buscar producto..." />
-        <button class="btn-primary">Buscar</button>
-      </div>
+      <form method="GET" class="buscador">
+        <input type="text" name="buscar" placeholder="Buscar producto..." />
+        <button type="submit" class="btn-primary">Buscar</button>
+      </form>
     </section>
 
     <section class="catalogo container">
@@ -43,51 +59,52 @@
         <div>
           <h4>Categoría</h4>
           <ul>
-            <li>Camisas</li>
-            <li>Tazas</li>
-            <li>Gorras</li>
+            <li><a href="?categoria=CAMISA">Camisas</a></li>
+            <li><a href="?categoria=TAZA">Tazas</a></li>
+            <li><a href="?categoria=GORRA">Gorras</a></li>
+            <li><a href="?categoria=SUDADERA">Sudaderas</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Precio</h4>
           <ul>
-            <li>$0 - $100</li>
-            <li>$100 - $300</li>
-            <li>$300+</li>
+            <li><a href="?precio=0-100">$0 - $100</a></li>
+            <li><a href="?precio=100-300">$100 - $300</a></li>
+            <li><a href="?precio=300plus">$300+</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Popularidad</h4>
           <ul>
-            <li>Más vendidos</li>
-            <li>Nuevos</li>
+            <li><a href="?popularidad=mas-vendidos">Más vendidos</a></li>
+            <li><a href="?popularidad=nuevos">Nuevos</a></li>
           </ul>
         </div>
       </aside>
 
       <div class="productos-catalogo">
         <div class="grid-productos">
-          <div class="card">
-            <span class="badge">Nuevo</span>
-            <img src="img/productos/camisa1.png" />
-            <h3>Camisa personalizada</h3>
-            <p>$250 MXN</p>
-          </div>
 
-          <div class="card">
-            <span class="badge">Popular</span>
-            <img src="img/productos/taza1.png" />
-            <h3>Taza personalizada</h3>
-            <p>$120 MXN</p>
-          </div>
+            <?php while ($row = $result->fetch_assoc()): ?>
 
-          <div class="card">
-            <img src="img/productos/gorra1.jpg" />
-            <h3>Gorra personalizada</h3>
-            <p>$180 MXN</p>
-          </div>
+              <div class="card">
+
+                <?php if ($row['is_new']): ?>
+                  <span class="badge">Nuevo</span>
+                <?php elseif ($row['is_best_seller']): ?>
+                  <span class="badge">Más vendido</span>
+                <?php endif; ?>
+
+                <img src="../<?= $row['imagen'] ?>" alt="<?= $row['nombre'] ?>" />
+                <h3><?= $row['nombre'] ?></h3>
+                <p>$<?= $row['precio'] ?> MXN</p>
+
+              </div>
+
+            <?php endwhile; ?>
+
         </div>
       </div>
     </section>
