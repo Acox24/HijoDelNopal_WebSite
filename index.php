@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,8 +33,18 @@
         <ul class="nav-links" id="nav-links">
           <li><a href="index.php">Home</a></li>
           <li><a href="user/catalogo.php">Catálogo</a></li>
-          <li><a href="login.php">Iniciar Sesión</a></li>
-          <li><a href="registro.php" class="btn-primary">Registrarse</a></li>
+
+          <?php if (isset($_SESSION['user_id'])): ?>
+
+              <li>Hola, <?= $_SESSION['user_email'] ?></li>
+              <li><a href="logout.php">Cerrar sesión</a></li>
+
+          <?php else: ?>
+
+              <li><a href="login.php">Iniciar sesión</a></li>
+              <li><a href="registro.php">Registrarse</a></li>
+
+          <?php endif; ?>
         </ul>
       </nav>
     </header>
@@ -40,7 +54,7 @@
     </section>
 
     <section class="cta">
-      <a href="catalogo.html" class="btn-primary">Explorar productos</a>
+      <a href="user/catalogo.php" class="btn-primary">Explorar productos</a>
     </section>
 
     <section class="container productos">

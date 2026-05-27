@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once '../includes/db.php';
 
@@ -10,21 +11,24 @@ $sql = "SELECT * FROM usuarios WHERE correo = '$email'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) == 1) {
-    
+
     $user = mysqli_fetch_assoc($result);
 
     // 2. Verificar contraseña
     if (password_verify($password, $user['password'])) {
-        
+
         // 3. Crear sesión
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_email'] = $user['correo'];
         $_SESSION['user_role'] = $user['rol'];
 
         // 4. Redirigir
-        header("Location: ../index.php");
+        if ($user['rol'] === 'admin') {
+            header("Location: ../admin/admin-catalogo.php");
+        } else {
+            header("Location: ../index.php");
+        }
         exit();
-
     } else {
         header("Location: ../login.php?error=pass");
         exit();

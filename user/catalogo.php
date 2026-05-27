@@ -21,8 +21,8 @@
         <ul class="nav-links" id="nav-links">
           <li><a href="../index.php">Home</a></li>
           <li><a href="catalogo.php">Catálogo</a></li>
-          <li><a href="../login.html">Iniciar Sesión</a></li>
-          <li><a href="../registro.html" class="btn-primary">Registrarse</a></li>
+          <li><a href="../login.php">Iniciar Sesión</a></li>
+          <li><a href="../registro.php" class="btn-primary">Registrarse</a></li>
         </ul>
       </nav>
     </header>
