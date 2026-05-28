@@ -1,6 +1,16 @@
-/* HEADER */
+/* LAYOUT PRINCIPAL */
+.carrito {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* COLUMNA 1 (HEADER) */
 .carrito-header {
-  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
 }
 
 .carrito-header h2 {
@@ -11,29 +21,46 @@
   margin-bottom: 15px;
 }
 
-/* LAYOUT */
-.carrito {
-  display: flex;
-  gap: 30px;
+/* IZQUIERDA (PRODUCTOS) */
+.carrito-items {
+  flex: 2; /* MÁS GRANDE */
 }
 
-/* RESUMEN */
-.carrito-resumen {
-  flex: 2;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* TOTALES */
-.carrito-totales {
-  flex: 1;
+/* DERECHA (RESUMEN) */
+.carrito-summary {
+  flex: 1; /* MÁS PEQUEÑO */
   display: flex;
   flex-direction: column;
   gap: 15px;
+  position: sticky;
+  top: 20px;
 }
 
-/* CARD TOTAL */
+/* CARD PRODUCTO */
+.card-carrito {
+  display: flex;
+  gap: 15px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+/* IMAGEN CONTROLADA */
+.card-carrito img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* INFO */
+.card-carrito .info h4 {
+  margin-bottom: 5px;
+}
+
+/* TOTALES */
 .card-total {
   background-color: white;
   padding: 15px;
@@ -49,12 +76,18 @@
   font-weight: bold;
 }
 
+/* BOTÓN */
+.btn-full {
+  width: 100%;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .carrito {
     flex-direction: column;
   }
 
-  .carrito-totales {
-    order: -1; /* sube los totales arriba */
+  .carrito-summary {
+    position: static;
   }
 }

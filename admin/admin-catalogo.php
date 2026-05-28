@@ -106,7 +106,6 @@ $result = mysqli_query($conn, $sql);
 
 </section>
 
-<script src="../js/main.js"></script>
 <?php include '../views/editar_producto.php'; ?>
 </body>
 </html>

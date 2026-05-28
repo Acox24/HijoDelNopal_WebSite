@@ -150,6 +150,14 @@ button:disabled {
     color: #721c24;
 }
 
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
   .filtros {
     width: 100%

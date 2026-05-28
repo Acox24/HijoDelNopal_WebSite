@@ -15,6 +15,7 @@ require_once '../includes/get_proucts.php';
     <link rel="stylesheet" href="../css/layout.css" />
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/pages/catalogo.css" />
+    <script src="../js/main.js"></script>
   </head>
   <body>
     <header>
@@ -101,9 +102,18 @@ require_once '../includes/get_proucts.php';
                 <h3><?= $row['nombre'] ?></h3>
                 <p>$<?= $row['precio'] ?> MXN</p>
 
-              </div>
+                <button class="btn-carrito"
+                  onclick="abrirModalCarrito(
+                    <?= $row['id'] ?>,
+                    '<?= $row['nombre'] ?>',
+                    <?= $row['precio'] ?>
+                  )">
+                  🛒
+                </button>
 
+              </div>
             <?php endwhile; ?>
+            <?php include '../views/añadir_producto_carrito.php'; ?>
 
         </div>
       </div>
@@ -127,6 +137,6 @@ require_once '../includes/get_proucts.php';
 
       <p class="copy">© 2026 El Hijo del Nopal</p>
     </footer>
-    <script src="../js/main.js"></script>
+    
   </body>
 </html>

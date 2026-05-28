@@ -72,4 +72,25 @@ function cerrarModal() {
   document.getElementById("modalEditar").style.display = "none";
 }
 
-console.log(typeof abrirModal);
+function abrirModalCarrito(id, nombre, precio) {
+    document.getElementById("modalCarrito").style.display = "block";
+
+    document.getElementById("modalNombre").innerText = nombre;
+    document.getElementById("modalPrecio").innerText = "$" + precio;
+
+    document.getElementById("modalCantidad").value = 1;
+    document.getElementById("modalProductoId").value = id;
+}
+
+function cerrarModalCarrito() {
+    document.getElementById("modalCarrito").style.display = "none";
+}
+
+function agregarAlCarrito() {
+    const id = document.getElementById("modalProductoId").value;
+    const cantidad = document.getElementById("modalCantidad").value;
+
+    window.location.href = `../actions/add_to_car.php?id=${id}&cantidad=${cantidad}`;
+}
+
+//console.log(typeof abrirModalCarrito); // Verificar que la función esté definida
