@@ -20,28 +20,32 @@ require_once '../includes/get_proucts.php';
   <body>
     <header>
       <nav class="navbar">
-        <div class="logo">
-          <h1>El Hijo del Nopal</h1>
-        </div>
+  <div class="logo">
+    <h1>El Hijo del Nopal</h1>
+  </div>
 
-        <div class="menu-toggle" id="menu-toggle">☰</div>
+  <div class="menu-toggle" id="menu-toggle">☰</div>
 
-        <ul class="nav-links" id="nav-links">
-          <li><a href="../index.php">Home</a></li>
-          <li><a href="catalogo.php">Catálogo</a></li>
-           <?php if (isset($_SESSION['user_id'])): ?>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../index.php">Home</a></li>
+    <li><a href="catalogo.php">Catálogo</a></li>
 
-              <li>Hola, <?= $_SESSION['user_email'] ?></li>
-              <li><a href="../logout.php">Cerrar sesión</a></li>
+    <?php if (isset($_SESSION['user_id'])): ?>
 
-          <?php else: ?>
+        <li><a href="carrito.php">Carrito</a></li>
 
-              <li><a href="../login.php">Iniciar sesión</a></li>
-              <li><a href="../registro.php">Registrarse</a></li>
+        <li>Hola, <?= $_SESSION['user_email'] ?></li>
+        <li><a href="../logout.php">Cerrar sesión</a></li>
 
-          <?php endif; ?>
-        </ul>
-      </nav>
+    <?php else: ?>
+
+        <li><a href="../login.php">Iniciar sesión</a></li>
+        <li><a href="../registro.php">Registrarse</a></li>
+
+    <?php endif; ?>
+
+  </ul>
+</nav>
     </header>
 
     <section class="catalogo-header container">
@@ -103,11 +107,15 @@ require_once '../includes/get_proucts.php';
                 <p>$<?= $row['precio'] ?> MXN</p>
 
                 <button class="btn-carrito"
-                  onclick="abrirModalCarrito(
-                    <?= $row['id'] ?>,
-                    '<?= $row['nombre'] ?>',
-                    <?= $row['precio'] ?>
-                  )">
+                  onclick="<?php if(isset($_SESSION['user_id'])): ?>
+                      abrirModalCarrito(
+                        <?= $row['id'] ?>,
+                        '<?= $row['nombre'] ?>',
+                        <?= $row['precio'] ?>
+                      )
+                  <?php else: ?>
+                      window.location.href = '../login.php'
+                  <?php endif; ?>">
                   🛒
                 </button>
 
